@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NeuraFlash · People Operations — Workforce Transition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root { --navy:#060F1F; --navy-2:#0B1B33; --navy-card:#0F2240; --line:#1E3357;
+    --blue:#2E7BFF; --blue-2:#1B5FE0; --cyan:#46D8F5; --gold:#FFCB45;
+    --ink:#EAF1FB; --ink-soft:#B7C6DD; --muted:#7E92B0; --radius:16px; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:var(--navy);
+    line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh;
+    background-image:radial-gradient(1000px 560px at 75% -8%, rgba(46,123,255,.30), transparent 60%),
+      radial-gradient(700px 480px at 4% 2%, rgba(70,216,245,.12), transparent 55%); background-repeat:no-repeat; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 28px; }
+  a { color:inherit; text-decoration:none; }
+  .topbar { border-bottom:1px solid var(--line); }
+  .topbar-inner { display:flex; align-items:center; justify-content:space-between; height:70px; }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .eclipse { width:30px; height:30px; border-radius:50%; flex:none; position:relative;
+    background:radial-gradient(circle at 32% 30%, var(--cyan), var(--blue) 55%, var(--blue-2) 100%); box-shadow:0 0 22px rgba(46,123,255,.6); }
+  .eclipse::after { content:""; position:absolute; top:-3px; right:-3px; width:16px; height:16px; border-radius:50%; background:var(--navy); }
+  .wordmark { font-family:'Sora',sans-serif; font-weight:700; font-size:19px; letter-spacing:-.02em; }
+  .wordmark b { color:var(--cyan); }
+  .brand .sub { display:block; font-family:'Sora',sans-serif; font-weight:500; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:1px; }
+  .topbar-right { display:flex; align-items:center; gap:16px; }
+  .accenture { font-size:11px; color:var(--muted); }
+
+  .hero { padding:74px 0 16px; }
+  .eyebrow { font-family:'Sora',sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--cyan); margin:0 0 18px; }
+  .hero h1 { font-family:'Sora',sans-serif; font-weight:800; letter-spacing:-.03em; line-height:1.05; font-size:clamp(32px,5vw,54px);
+    margin:0 0 18px; max-width:18ch; background:linear-gradient(180deg,#fff,#C9DCFF); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p { font-size:17px; color:var(--ink-soft); margin:0; max-width:60ch; }
+
+  .cards { display:grid; grid-template-columns:1fr 1fr; gap:22px; padding:46px 0 30px; }
+  .card { display:block; background:linear-gradient(180deg,var(--navy-card),var(--navy-2)); border:1px solid var(--line);
+    border-radius:var(--radius); padding:30px; box-shadow:0 24px 60px rgba(0,0,0,.35); transition:transform .12s, border-color .15s; }
+  .card:hover { transform:translateY(-3px); border-color:var(--blue); }
+  .card .ic { width:46px; height:46px; border-radius:12px; display:grid; place-items:center; font-size:22px;
+    background:rgba(46,123,255,.14); border:1px solid rgba(46,123,255,.3); color:var(--cyan); margin-bottom:18px; }
+  .card h2 { font-family:'Sora',sans-serif; font-weight:700; font-size:20px; letter-spacing:-.01em; margin:0 0 8px; }
+  .card p { font-size:14px; color:var(--ink-soft); margin:0 0 18px; }
+  .card .go { font-family:'Sora',sans-serif; font-weight:600; font-size:14px; color:var(--cyan); display:inline-flex; align-items:center; gap:7px; }
+  .card .go .arrow { transition:transform .15s; }
+  .card:hover .go .arrow { transform:translateX(4px); }
+
+  footer { border-top:1px solid var(--line); margin-top:30px; padding:24px 0 40px; font-size:12.5px; color:var(--muted);
+    display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center; }
+  footer .fb { display:flex; align-items:center; gap:9px; }
+  footer .eclipse { width:18px; height:18px; }
+
+  @media (max-width:760px){ .cards{grid-template-columns:1fr;} .hero{padding:48px 0 8px;} .accenture{display:none;} }
+</style>
+</head>
+<body>
+  <header class="topbar"><div class="wrap topbar-inner">
+    <div class="brand"><span class="eclipse" aria-hidden="true"></span>
+      <span><span class="wordmark">neura<b>flash</b></span><span class="sub">People Operations</span></span></div>
+    <div class="topbar-right"><span class="accenture">Part of Accenture</span></div>
+  </div></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Workforce Transition Notice</p>
+      <h1>Two sides of one careful conversation.</h1>
+      <p>An internal tool to deliver role-transition notices with clarity and care. People Operations composes and reviews the notice; the team member receives a clear, dignified summary of what comes next.</p>
+    </section>
+
+    <section class="cards">
+      <a class="card" href="index.html">
+        <div class="ic" aria-hidden="true">⌘</div>
+        <h2>HR / Admin console</h2>
+        <p>Compose a notice, set severance and benefits, and review the exact email before sending. Live preview as you type.</p>
+        <span class="go">Open admin console <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="candidate.html?company=NeuraFlash&sender=Jordan%20Lee,%20Head%20of%20People&name=Priya%20Sharma&email=priya.sharma@neuraflash.com&role=Senior%20Consultant,%20Service%20Cloud&lastday=2026-06-30&payN=2&payU=months%20of%20base%20salary&medN=2&medU=months,%20fully%20covered">
+        <div class="ic" aria-hidden="true">✉</div>
+        <h2>Candidate view <span style="font-weight:500;color:var(--muted);font-size:13px">(sample)</span></h2>
+        <p>What the team member receives: the notice, an itemized package, a what-happens-next timeline, FAQs, and an acknowledgement step.</p>
+        <span class="go">View sample notice <span class="arrow">→</span></span>
+      </a>
+    </section>
+
+    <footer>
+      <span class="fb"><span class="eclipse" aria-hidden="true"></span>NeuraFlash People Operations — a tool for sensitive workforce communications.</span>
+      <span style="font-family:'Sora',sans-serif;letter-spacing:.04em">v1.0</span>
+    </footer>
+  </main>
+</body>
+</html>

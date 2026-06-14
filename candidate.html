@@ -36,8 +36,6 @@
   .brand .sub { display:block; font-family:'Sora',sans-serif; font-weight:500; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:1px; }
   .topbar-right { display:flex; align-items:center; gap:16px; }
   .accenture { font-size:11px; color:var(--muted); display:none; }
-  .demo-pill { font-family:'Sora',sans-serif; font-size:11px; font-weight:500; letter-spacing:.04em; color:var(--gold);
-    background:rgba(255,203,69,.10); border:1px solid rgba(255,203,69,.32); padding:7px 13px; border-radius:100px; white-space:nowrap; }
 
   /* document */
   .doc-wrap { padding:46px 0 70px; }
@@ -114,7 +112,7 @@
 
   @media (min-width:760px){ .accenture{display:inline;} }
   @media (max-width:720px){ .doc-inner{padding:28px 22px 6px;} .doc-banner{padding:22px;} .recipient{grid-template-columns:1fr;} .pkg{grid-template-columns:1fr;} .doc-foot{margin:24px 22px 0;} }
-  @media print { body{background:#fff;} .topbar,.demo-pill,.ack,.btn{display:none!important;} .doc{box-shadow:none;border:1px solid #ddd;} }
+  @media print { body{background:#fff;} .topbar,.ack,.btn{display:none!important;} .doc{box-shadow:none;border:1px solid #ddd;} }
 </style>
 </head>
 <body>
@@ -126,7 +124,6 @@
       </a>
       <div class="topbar-right">
         <span class="accenture">Part of Accenture</span>
-        <span class="demo-pill">Demo mode · sample notice</span>
       </div>
     </div>
   </header>
@@ -191,7 +188,7 @@
           <div class="actions">
             <button class="btn btn-primary" id="ackBtn" disabled>Acknowledge receipt</button>
             <button class="btn btn-ghost" onclick="window.print()">Download / print</button>
-            <span class="ack-done" id="ackDone">✓ Receipt acknowledged (demo — not recorded)</span>
+            <span class="ack-done" id="ackDone">✓ Receipt acknowledged</span>
           </div>
         </div>
       </div>
@@ -247,7 +244,7 @@
   $('cEmail').textContent = hrEmail; $('cEmail').href = 'mailto:' + hrEmail;
   $('docFoot').textContent = company + ', Part of Accenture · People Operations. This document contains confidential employment information intended only for the named recipient. If you received it in error, please notify People Operations and delete it.';
 
-  // acknowledgement (demo)
+  // acknowledgement
   $('ackBox').addEventListener('change', function(){ $('ackBtn').disabled = !this.checked; });
   $('ackBtn').addEventListener('click', function(){
     $('ackDone').classList.add('show'); this.disabled = true; this.textContent = 'Acknowledged';
