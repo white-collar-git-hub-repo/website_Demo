@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NeuraFlash · Role Transition Notice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:#060F1F; --navy-2:#0B1B33; --line:#1E3357;
+    --blue:#2E7BFF; --blue-2:#1B5FE0; --cyan:#46D8F5; --gold:#FFCB45;
+    --ink:#EAF1FB; --ink-soft:#B7C6DD; --muted:#7E92B0;
+    /* document (light) */
+    --d-ink:#0F2240; --d-soft:#41566F; --d-line:#E4E9F1; --d-tint:#EFF4FF; --d-muted:#7587A0;
+    --radius:16px;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:var(--navy);
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+    background-image: radial-gradient(900px 480px at 80% -10%, rgba(46,123,255,.26), transparent 60%); background-repeat:no-repeat; }
+  a { color:inherit; }
+  .wrap { max-width:1200px; margin:0 auto; padding:0 28px; }
+
+  /* topbar */
+  .topbar { position:sticky; top:0; z-index:20; background:rgba(6,15,31,.8); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .topbar-inner { display:flex; align-items:center; justify-content:space-between; height:70px; }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .eclipse { width:30px; height:30px; border-radius:50%; flex:none; position:relative;
+    background:radial-gradient(circle at 32% 30%, var(--cyan), var(--blue) 55%, var(--blue-2) 100%);
+    box-shadow:0 0 22px rgba(46,123,255,.6); }
+  .eclipse::after { content:""; position:absolute; top:-3px; right:-3px; width:16px; height:16px; border-radius:50%; background:var(--navy); }
+  .wordmark { font-family:'Sora',sans-serif; font-weight:700; font-size:19px; letter-spacing:-.02em; }
+  .wordmark b { color:var(--cyan); }
+  .brand .sub { display:block; font-family:'Sora',sans-serif; font-weight:500; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:1px; }
+  .topbar-right { display:flex; align-items:center; gap:16px; }
+  .accenture { font-size:11px; color:var(--muted); display:none; }
+  .demo-pill { font-family:'Sora',sans-serif; font-size:11px; font-weight:500; letter-spacing:.04em; color:var(--gold);
+    background:rgba(255,203,69,.10); border:1px solid rgba(255,203,69,.32); padding:7px 13px; border-radius:100px; white-space:nowrap; }
+
+  /* document */
+  .doc-wrap { padding:46px 0 70px; }
+  .doc { max-width:900px; margin:0 auto; background:#fff; color:var(--d-ink); border-radius:var(--radius);
+    box-shadow:0 30px 70px rgba(0,0,0,.45); overflow:hidden; }
+  .doc-banner { background:var(--navy); padding:30px 44px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    background-image:radial-gradient(460px 200px at 92% -50%, rgba(46,123,255,.55), transparent 70%); }
+  .doc-banner .left { display:flex; align-items:center; gap:12px; }
+  .doc-banner .wm { font-family:'Sora',sans-serif; font-weight:700; color:#fff; font-size:18px; letter-spacing:-.01em; }
+  .doc-banner .wm b { color:var(--cyan); }
+  .doc-banner .conf { font-family:'Sora',sans-serif; font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--cyan); border:1px solid rgba(70,216,245,.4); padding:6px 11px; border-radius:100px; }
+
+  .doc-inner { padding:40px 44px 8px; }
+  .doc-title { font-family:'Sora',sans-serif; font-weight:700; font-size:26px; letter-spacing:-.02em; margin:0 0 6px; }
+  .doc-date { font-size:13px; color:var(--d-muted); margin:0 0 26px; }
+
+  .recipient { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; padding:18px 20px; margin-bottom:30px;
+    background:var(--d-tint); border:1px solid #DCE7FF; border-radius:12px; }
+  .recipient .cell .k { font-family:'Sora',sans-serif; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--d-muted); margin-bottom:4px; }
+  .recipient .cell .v { font-size:14.5px; font-weight:600; color:var(--d-ink); }
+
+  .letter p { font-size:15px; color:var(--d-soft); margin:0 0 15px; }
+  .letter .greet { color:var(--d-ink); font-weight:600; }
+  .strong { color:var(--d-ink); font-weight:600; }
+
+  .section-h { font-family:'Sora',sans-serif; font-weight:700; font-size:17px; letter-spacing:-.01em; margin:34px 0 14px;
+    padding-bottom:10px; border-bottom:1px solid var(--d-line); }
+
+  .pkg { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .pkg .card { border:1px solid var(--d-line); border-radius:12px; padding:18px; }
+  .pkg .card .tag { font-family:'Sora',sans-serif; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--blue-2); margin-bottom:8px; }
+  .pkg .card .big { font-family:'Sora',sans-serif; font-weight:700; font-size:20px; color:var(--d-ink); letter-spacing:-.01em; }
+  .pkg .card .desc { font-size:13px; color:var(--d-soft); margin-top:6px; }
+
+  .timeline { list-style:none; margin:0; padding:0; counter-reset:step; }
+  .timeline li { position:relative; padding:0 0 20px 40px; counter-increment:step; }
+  .timeline li::before { content:counter(step); position:absolute; left:0; top:0; width:26px; height:26px; border-radius:50%;
+    background:linear-gradient(180deg,var(--blue),var(--blue-2)); color:#fff; font-family:'Sora',sans-serif; font-weight:700; font-size:13px;
+    display:grid; place-items:center; }
+  .timeline li::after { content:""; position:absolute; left:12.5px; top:30px; bottom:2px; width:1px; background:var(--d-line); }
+  .timeline li:last-child { padding-bottom:0; }
+  .timeline li:last-child::after { display:none; }
+  .timeline .t { font-weight:600; font-size:14.5px; color:var(--d-ink); }
+  .timeline .d { font-size:13px; color:var(--d-soft); margin-top:2px; }
+
+  .faq details { border:1px solid var(--d-line); border-radius:10px; padding:0 16px; margin-bottom:10px; }
+  .faq summary { cursor:pointer; list-style:none; padding:14px 0; font-weight:600; font-size:14px; color:var(--d-ink);
+    display:flex; justify-content:space-between; align-items:center; }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary::after { content:"+"; font-family:'Sora',sans-serif; color:var(--blue); font-size:20px; line-height:1; }
+  .faq details[open] summary::after { content:"–"; }
+  .faq .a { font-size:13.5px; color:var(--d-soft); padding:0 0 16px; margin:0; }
+
+  .contact { display:flex; gap:16px; align-items:center; background:var(--d-tint); border:1px solid #DCE7FF; border-radius:12px; padding:18px 20px; }
+  .contact .av { width:46px; height:46px; border-radius:50%; flex:none; background:linear-gradient(180deg,var(--blue),var(--blue-2));
+    color:#fff; font-family:'Sora',sans-serif; font-weight:700; display:grid; place-items:center; font-size:17px; }
+  .contact .who { font-weight:600; color:var(--d-ink); font-size:15px; }
+  .contact .meta { font-size:13px; color:var(--d-soft); margin-top:2px; }
+  .contact .meta a { color:var(--blue-2); text-decoration:none; }
+
+  .ack { margin-top:34px; padding:22px; border:1px dashed #C6D4EC; border-radius:12px; background:#FAFCFF; }
+  .ack label { display:flex; gap:10px; align-items:flex-start; font-size:13.5px; color:var(--d-soft); cursor:pointer; }
+  .ack input { margin-top:3px; width:16px; height:16px; accent-color:var(--blue); }
+  .ack .actions { margin-top:16px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .btn { font-family:'Sora',sans-serif; font-weight:600; font-size:14px; cursor:pointer; border-radius:100px; padding:11px 24px; border:1px solid transparent; }
+  .btn-primary { color:#fff; background:linear-gradient(180deg,var(--blue),var(--blue-2)); box-shadow:0 8px 22px rgba(46,123,255,.32); }
+  .btn-primary:disabled { background:#C3CEE0; color:#fff; box-shadow:none; cursor:not-allowed; }
+  .btn-ghost { background:transparent; color:var(--d-soft); border-color:var(--d-line); }
+  .ack-done { display:none; align-items:center; gap:9px; color:#1B7A4B; font-weight:600; font-size:14px; }
+  .ack-done.show { display:flex; }
+
+  .doc-foot { margin:30px 44px 0; padding:18px 0 36px; border-top:1px solid var(--d-line); font-size:11.5px; color:var(--d-muted); }
+
+  @media (min-width:760px){ .accenture{display:inline;} }
+  @media (max-width:720px){ .doc-inner{padding:28px 22px 6px;} .doc-banner{padding:22px;} .recipient{grid-template-columns:1fr;} .pkg{grid-template-columns:1fr;} .doc-foot{margin:24px 22px 0;} }
+  @media print { body{background:#fff;} .topbar,.demo-pill,.ack,.btn{display:none!important;} .doc{box-shadow:none;border:1px solid #ddd;} }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="eclipse" aria-hidden="true"></span>
+        <span><span class="wordmark">neura<b>flash</b></span><span class="sub">People Operations</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="accenture">Part of Accenture</span>
+        <span class="demo-pill">Demo mode · sample notice</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap doc-wrap">
+    <article class="doc">
+      <div class="doc-banner">
+        <div class="left"><span class="eclipse" aria-hidden="true"></span><span class="wm" id="bWm">neura<b>flash</b></span></div>
+        <span class="conf">Private &amp; Confidential</span>
+      </div>
+
+      <div class="doc-inner">
+        <h1 class="doc-title">Notice of Role Transition</h1>
+        <p class="doc-date" id="docDate">Issued —</p>
+
+        <div class="recipient">
+          <div class="cell"><div class="k">Employee</div><div class="v" id="rName">—</div></div>
+          <div class="cell"><div class="k">Role / Team</div><div class="v" id="rRole">—</div></div>
+          <div class="cell"><div class="k">Last working day</div><div class="v" id="rDate">—</div></div>
+        </div>
+
+        <div class="letter">
+          <p class="greet" id="lGreet">Dear [employee name],</p>
+          <p id="lIntro">We are writing to inform you of a difficult decision. As part of a planned change to our organization, your role <span id="lRole"></span>will be eliminated, and your employment with <span id="lCo1">NeuraFlash</span> will conclude on <span class="strong" id="lDate">[date]</span>.</p>
+          <p>This decision is a result of changes to the business and is in no way a reflection of the quality of your work or the contributions you have made. We are grateful for them.</p>
+          <p>To support you through this transition, the company is providing the package outlined below.</p>
+        </div>
+
+        <h2 class="section-h">Your transition package</h2>
+        <div class="pkg">
+          <div class="card"><div class="tag">Severance pay</div><div class="big" id="pPay">2 months</div><div class="desc" id="pPayD">of base salary, paid on the normal payroll schedule.</div></div>
+          <div class="card"><div class="tag">Healthcare</div><div class="big" id="pMed">2 months</div><div class="desc" id="pMedD">of continued medical coverage, fully paid by the company.</div></div>
+          <div class="card"><div class="tag">Final pay</div><div class="big">All earned wages</div><div class="desc">plus any accrued, unused leave, settled in your final paycheck.</div></div>
+          <div class="card"><div class="tag">Transition support</div><div class="big">References &amp; outplacement</div><div class="desc">career assistance and professional references, available on request.</div></div>
+        </div>
+
+        <h2 class="section-h">What happens next</h2>
+        <ol class="timeline">
+          <li><div class="t">A call from People Operations</div><div class="d">Within 2 business days, your HR contact will reach out to walk through this notice and answer questions.</div></li>
+          <li><div class="t">Benefits &amp; final pay details</div><div class="d">You'll receive written details on coverage end dates, severance timing, and your final paycheck.</div></li>
+          <li><div class="t">Return of company property</div><div class="d">We'll arrange a simple way to return your laptop and any equipment — no rush, we'll coordinate around you.</div></li>
+          <li><div class="t">Documents &amp; acknowledgement</div><div class="d">Separation paperwork will be shared for your review. You can acknowledge receipt of this notice below.</div></li>
+        </ol>
+
+        <h2 class="section-h">Questions you may have</h2>
+        <div class="faq">
+          <details><summary>When does my medical coverage end?</summary><p class="a" id="fMed">Your coverage continues for the period stated above, fully paid by the company. Your HR contact will confirm the exact end date and your options after that in writing.</p></details>
+          <details><summary>How and when is my severance paid?</summary><p class="a" id="fPay">Severance is paid on the normal payroll schedule following your last working day. The full schedule will be included in your separation documents.</p></details>
+          <details><summary>Can I use the company as a reference?</summary><p class="a">Yes. We're glad to provide professional references and to help where we can with your search. Just let your HR contact know.</p></details>
+          <details><summary>Who do I talk to if I have concerns?</summary><p class="a">Your dedicated People Operations contact, listed below, is your single point of contact through the entire transition.</p></details>
+        </div>
+
+        <h2 class="section-h">Your point of contact</h2>
+        <div class="contact">
+          <div class="av" id="cAv">JL</div>
+          <div><div class="who" id="cWho">Jordan Lee, Head of People</div>
+            <div class="meta">NeuraFlash People Operations · <a id="cEmail" href="mailto:people@neuraflash.com">people@neuraflash.com</a></div></div>
+        </div>
+
+        <div class="ack">
+          <label><input type="checkbox" id="ackBox" /> I confirm that I have received and read this Notice of Role Transition. (Acknowledging receipt does not waive any of your rights.)</label>
+          <div class="actions">
+            <button class="btn btn-primary" id="ackBtn" disabled>Acknowledge receipt</button>
+            <button class="btn btn-ghost" onclick="window.print()">Download / print</button>
+            <span class="ack-done" id="ackDone">✓ Receipt acknowledged (demo — not recorded)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-foot" id="docFoot">NeuraFlash, Part of Accenture · People Operations. This document contains confidential employment information intended only for the named recipient. If you received it in error, please notify People Operations and delete it.</div>
+    </article>
+  </main>
+
+<script>
+(function () {
+  var $ = function (id){ return document.getElementById(id); };
+  var p = new URLSearchParams(location.search);
+  function g(k, d){ var v = p.get(k); return (v === null || v === '') ? d : v; }
+
+  var company = g('company','NeuraFlash');
+  var sender  = g('sender','Jordan Lee, Head of People');
+  var name    = g('name','');
+  var email   = g('email','');
+  var role    = g('role','');
+  var lastday = g('lastday','');
+  var payN = g('payN','2'), payU = g('payU','months of base salary');
+  var medN = g('medN','2'), medU = g('medU','months, fully covered');
+  var note = g('note','');
+
+  function fmt(v){ if(!v) return '[date]'; var d=new Date(v+'T00:00:00'); if(isNaN(d)) return '[date]';
+    return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}); }
+  function today(){ return new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}); }
+  function initials(n){ var parts=n.trim().split(/\s+/); if(!parts[0]) return 'NF';
+    return ((parts[0][0]||'')+(parts.length>1?parts[parts.length-1][0]:'')).toUpperCase(); }
+
+  if (company.toLowerCase()==='neuraflash'){ $('bWm').innerHTML='neura<b>flash</b>'; } else { $('bWm').textContent=company; }
+  $('docDate').textContent = 'Issued ' + today();
+  $('rName').textContent = name || '—';
+  $('rRole').textContent = role || '—';
+  $('rDate').textContent = fmt(lastday);
+  $('lGreet').textContent = 'Dear ' + (name || '[employee name]') + ',';
+  $('lRole').textContent = role ? ('as ' + role + ' ') : '';
+  $('lCo1').textContent = company;
+  $('lDate').textContent = fmt(lastday);
+
+  function unit(s){ var m = s.match(/months?|weeks?|days?/i); return m ? m[0] : ''; }
+  $('pPay').textContent = (payN || '—') + ' ' + unit(payU);
+  $('pPayD').textContent = 'of base salary, paid on the normal payroll schedule.';
+  $('pMed').textContent = (medN || '—') + ' ' + unit(medU);
+  $('pMedD').textContent = 'of continued medical coverage, fully paid by the company.';
+
+  $('fMed').textContent = 'Your coverage continues for ' + (medN||'the stated') + ' ' + (unit(medU)||'period') + ', fully paid by the company. Your HR contact will confirm the exact end date and your options after that in writing.';
+  $('fPay').textContent = 'Severance equal to ' + (payN||'the stated amount') + ' ' + unit(payU) + ' of base salary is paid on the normal payroll schedule following your last working day. The full schedule will be included in your separation documents.';
+
+  $('cWho').textContent = sender;
+  $('cAv').textContent = initials(sender);
+  var hrEmail = 'people@' + (company.toLowerCase().replace(/[^a-z0-9]/g,'')||'company') + '.com';
+  $('cEmail').textContent = hrEmail; $('cEmail').href = 'mailto:' + hrEmail;
+  $('docFoot').textContent = company + ', Part of Accenture · People Operations. This document contains confidential employment information intended only for the named recipient. If you received it in error, please notify People Operations and delete it.';
+
+  // acknowledgement (demo)
+  $('ackBox').addEventListener('change', function(){ $('ackBtn').disabled = !this.checked; });
+  $('ackBtn').addEventListener('click', function(){
+    $('ackDone').classList.add('show'); this.disabled = true; this.textContent = 'Acknowledged';
+    $('ackBox').disabled = true;
+  });
+})();
+</script>
+</body>
+</html>

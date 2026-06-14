@@ -235,6 +235,7 @@
             <textarea id="note" placeholder="A short, sincere line specific to this person. Leave blank to omit."></textarea></div>
           <div class="actions">
             <button type="submit" class="btn btn-primary" id="sendBtn" disabled>Send notice</button>
+            <button type="button" class="btn btn-ghost" id="candidateBtn">Open candidate view</button>
             <button type="button" class="btn btn-ghost" id="resetBtn">Reset</button>
             <span class="send-note" id="sendNote">Add a name and email to enable sending.</span>
           </div>
@@ -349,6 +350,23 @@
 
   $('resetBtn').addEventListener('click', function () {
     $('composer').reset(); $('statusTag').style.color=''; render();
+  });
+
+  $('candidateBtn').addEventListener('click', function () {
+    var q = new URLSearchParams({
+      company: $('company').value.trim(),
+      sender:  $('sender').value.trim(),
+      name:    $('name').value.trim(),
+      email:   $('email').value.trim(),
+      role:    $('role').value.trim(),
+      lastday: $('lastday').value,
+      payN:    $('paymonths').value.trim(),
+      payU:    $('payunit').value.trim(),
+      medN:    $('medmonths').value.trim(),
+      medU:    $('medunit').value.trim(),
+      note:    $('note').value.trim()
+    });
+    window.open('candidate.html?' + q.toString(), '_blank');
   });
 
   (function () { var d = new Date(); d.setDate(d.getDate()+14); $('lastday').value = d.toISOString().slice(0,10); })();
