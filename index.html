@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NeuraFlash · People Operations — Transition Notice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:      #060F1F;
+    --navy-2:    #0B1B33;
+    --navy-card: #0F2240;
+    --line:      #1E3357;
+    --blue:      #2E7BFF;
+    --blue-2:    #1B5FE0;
+    --cyan:      #46D8F5;
+    --gold:      #FFCB45;
+    --ink:       #EAF1FB;
+    --ink-soft:  #B7C6DD;
+    --muted:     #7E92B0;
+    --radius:    16px;
+    /* email (light) */
+    --e-ink:   #0F2240;
+    --e-soft:  #41566F;
+    --e-line:  #E4E9F1;
+    --e-tint:  #EFF4FF;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; font-family: 'Inter', system-ui, sans-serif; color: var(--ink);
+    background: var(--navy); line-height: 1.5; -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(900px 520px at 78% -8%, rgba(46,123,255,.30), transparent 60%),
+      radial-gradient(700px 480px at 6% 4%, rgba(70,216,245,.12), transparent 55%);
+    background-repeat: no-repeat;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- top bar ---------- */
+  .topbar { position: sticky; top: 0; z-index: 20;
+    background: rgba(6,15,31,.78); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line); }
+  .topbar-inner { display:flex; align-items:center; justify-content:space-between; height: 70px; }
+  .brand { display:flex; align-items:center; gap: 12px; }
+  .eclipse { width: 30px; height: 30px; border-radius: 50%; flex:none; position: relative;
+    background: radial-gradient(circle at 32% 30%, var(--cyan), var(--blue) 55%, var(--blue-2) 100%);
+    box-shadow: 0 0 22px rgba(46,123,255,.6); }
+  .eclipse::after { content:""; position:absolute; top:-3px; right:-3px; width: 16px; height:16px;
+    border-radius:50%; background: var(--navy); }
+  .wordmark { font-family:'Sora',sans-serif; font-weight: 700; font-size: 19px; letter-spacing:-.02em; }
+  .wordmark b { color: var(--cyan); font-weight: 700; }
+  .brand .sub { display:block; font-family:'Sora',sans-serif; font-weight:500; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color: var(--muted); margin-top:1px; }
+  .topbar-right { display:flex; align-items:center; gap: 16px; }
+  .accenture { font-size: 11px; color: var(--muted); letter-spacing:.02em; display:none; }
+  .demo-pill { font-family:'Sora',sans-serif; font-size: 11px; font-weight:500; letter-spacing:.04em;
+    color: var(--gold); background: rgba(255,203,69,.10); border:1px solid rgba(255,203,69,.32);
+    padding: 7px 13px; border-radius: 100px; white-space: nowrap; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 64px 0 34px; }
+  .eyebrow { font-family:'Sora',sans-serif; font-weight:600; font-size: 12px; letter-spacing:.22em;
+    text-transform:uppercase; color: var(--cyan); margin:0 0 18px; }
+  .hero h1 { font-family:'Sora',sans-serif; font-weight: 800; letter-spacing:-.03em; line-height:1.04;
+    font-size: clamp(32px, 5vw, 56px); margin: 0 0 18px; max-width: 16ch;
+    background: linear-gradient(180deg,#fff, #C9DCFF); -webkit-background-clip:text;
+    background-clip:text; color: transparent; }
+  .hero p { font-size: 17px; color: var(--ink-soft); margin:0; max-width: 58ch; }
+  .stats { display:flex; gap: 40px; margin-top: 34px; flex-wrap: wrap; }
+  .stat .n { font-family:'Sora',sans-serif; font-weight:800; font-size: 30px; letter-spacing:-.02em;
+    color:#fff; line-height:1; }
+  .stat .n span { color: var(--cyan); }
+  .stat .l { font-size: 12.5px; color: var(--muted); margin-top: 7px; max-width: 22ch; }
+
+  /* ---------- workspace ---------- */
+  .workspace { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 8px 0 70px; align-items:start; }
+  .panel { background: linear-gradient(180deg, var(--navy-card), var(--navy-2));
+    border:1px solid var(--line); border-radius: var(--radius);
+    box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+  .panel-head { padding: 18px 22px; border-bottom:1px solid var(--line);
+    display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+  .panel-head h2 { font-family:'Sora',sans-serif; font-weight:700; font-size: 18px; letter-spacing:-.01em; margin:0; }
+  .panel-head .hint { font-family:'Sora',sans-serif; font-size: 11px; letter-spacing:.05em;
+    text-transform:uppercase; color: var(--muted); }
+
+  /* ---------- form ---------- */
+  form { padding: 8px 22px 24px; }
+  .field { margin-top: 16px; }
+  .field > label { display:block; font-size: 12.5px; font-weight:500; color: var(--ink-soft);
+    margin-bottom:6px; }
+  .req { color: var(--cyan); }
+  .opt { color: var(--muted); font-weight:400; }
+  input, textarea { width:100%; font:inherit; font-size:14.5px; color: var(--ink);
+    background: #08152B; border:1px solid var(--line); border-radius:10px; padding: 11px 13px;
+    transition: border-color .15s, box-shadow .15s; }
+  input::placeholder, textarea::placeholder { color:#536A8C; }
+  input:focus, textarea:focus { outline:none; border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(46,123,255,.22); }
+  input[type="date"] { color-scheme: dark; }
+  textarea { resize: vertical; min-height: 78px; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .inline { display:grid; grid-template-columns: 78px 1fr; gap:8px; }
+  .inline input[type="number"] { text-align:center; }
+
+  .actions { margin-top: 26px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .btn { font-family:'Sora',sans-serif; font-weight:600; font-size:14.5px; cursor:pointer;
+    border-radius: 100px; padding: 12px 26px; border:1px solid transparent; transition: transform .08s, background .15s, box-shadow .15s; }
+  .btn-primary { color:#fff; background: linear-gradient(180deg, var(--blue), var(--blue-2));
+    box-shadow: 0 8px 22px rgba(46,123,255,.4); }
+  .btn-primary:hover { box-shadow: 0 10px 28px rgba(46,123,255,.55); }
+  .btn-primary:active { transform: translateY(1px); }
+  .btn-primary:disabled { background:#28344A; color:#6F809B; box-shadow:none; cursor:not-allowed; }
+  .btn-ghost { background:transparent; color: var(--ink-soft); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--muted); color:#fff; }
+  .send-note { font-size:12.5px; color: var(--muted); }
+
+  /* ---------- email preview ---------- */
+  .preview-body { padding: 22px; }
+  .email-meta { background:#08152B; border:1px solid var(--line); border-bottom:none;
+    border-radius: 12px 12px 0 0; padding: 14px 18px; font-size:13px; }
+  .email-meta .line { display:flex; gap:8px; padding:2px 0; }
+  .email-meta .k { font-family:'Sora',sans-serif; font-size:10.5px; letter-spacing:.05em;
+    text-transform:uppercase; color: var(--muted); min-width:62px; padding-top:2px; }
+  .email-meta .v { color: var(--ink); }
+
+  .email-card { background:#fff; color: var(--e-ink); border-radius: 0 0 12px 12px;
+    padding: 0 0 30px; overflow:hidden; }
+  .email-banner { background: var(--navy); padding: 22px 28px; display:flex; align-items:center; gap:11px;
+    background-image: radial-gradient(420px 180px at 88% -40%, rgba(46,123,255,.5), transparent 70%); }
+  .email-banner .eclipse { width:26px; height:26px; }
+  .email-banner .wm { font-family:'Sora',sans-serif; font-weight:700; color:#fff; font-size:16px; letter-spacing:-.01em; }
+  .email-banner .wm b { color: var(--cyan); }
+  .email-inner { padding: 26px 28px 0; }
+  .email-inner p { margin:0 0 15px; font-size:14.5px; color: var(--e-soft); }
+  .email-inner .greet { color: var(--e-ink); font-weight:600; }
+  .date-strong { color: var(--e-ink); font-weight:600; }
+  .terms { list-style:none; margin: 4px 0 18px; padding: 16px 18px; background: var(--e-tint);
+    border:1px solid #DCE7FF; border-radius:12px; }
+  .terms li { display:flex; gap:12px; padding:8px 0; font-size:14px; align-items:flex-start; }
+  .terms li + li { border-top:1px solid #DCE7FF; }
+  .terms .label { color: var(--blue-2); font-weight:600; min-width:138px; }
+  .terms .val { color: var(--e-ink); }
+  .signoff { color: var(--e-ink); margin-top: 22px; }
+  .signoff .who { font-weight:600; }
+  .email-foot { margin: 26px 28px 0; padding-top: 16px; border-top:1px solid var(--e-line);
+    font-size: 11.5px; color:#8294AC; }
+
+  /* ---------- toast ---------- */
+  .toast-zone { position: fixed; bottom: 24px; left:50%; transform: translateX(-50%); z-index:50;
+    width: calc(100% - 40px); max-width: 460px; pointer-events:none; }
+  .toast { background: var(--navy-card); border:1px solid var(--blue); color:#fff; border-radius:14px;
+    padding: 15px 18px; box-shadow: 0 18px 50px rgba(0,0,0,.5); display:flex; gap:13px; align-items:flex-start;
+    opacity:0; transform: translateY(14px); transition: opacity .25s, transform .25s; }
+  .toast.show { opacity:1; transform: translateY(0); }
+  .toast .check { flex:none; width:24px; height:24px; border-radius:50%;
+    background: linear-gradient(180deg,var(--blue),var(--blue-2)); display:grid; place-items:center;
+    font-size:13px; margin-top:1px; box-shadow:0 0 14px rgba(46,123,255,.6); }
+  .toast .t-title { font-family:'Sora',sans-serif; font-weight:600; font-size:14px; }
+  .toast .t-sub { font-size:12px; color: var(--ink-soft); margin-top:3px; }
+
+  /* ---------- footer ---------- */
+  footer { border-top:1px solid var(--line); padding: 26px 0 42px; font-size:12.5px; color: var(--muted);
+    display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center; }
+  footer .fb { display:flex; align-items:center; gap:9px; }
+  footer .eclipse { width:18px; height:18px; }
+
+  @media (min-width: 760px) { .accenture { display:inline; } }
+  @media (max-width: 880px) { .workspace { grid-template-columns:1fr; } .hero { padding: 44px 0 24px; } .stats { gap: 28px; } }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#">
+        <span class="eclipse" aria-hidden="true"></span>
+        <span><span class="wordmark">neura<b>flash</b></span><span class="sub">People Operations</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="accenture">Part of Accenture</span>
+        <span class="demo-pill">Demo mode · no email is sent</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Workforce Transition Notice</p>
+      <h1>Deliver a hard message with clarity and care.</h1>
+      <p>Compose a role-transition notice, review the exact email the team member will receive, and send it — with severance and benefits stated plainly. So no one ever learns about a change to their role through a vague or careless message.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">2<span> mo</span></div><div class="l">base salary continued</div></div>
+        <div class="stat"><div class="n">2<span> mo</span></div><div class="l">medical coverage, fully paid</div></div>
+        <div class="stat"><div class="n">100<span>%</span></div><div class="l">notices reviewed before sending</div></div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <!-- COMPOSER -->
+      <div class="panel">
+        <div class="panel-head"><h2>Compose notice</h2><span class="hint">Updates preview live</span></div>
+        <form id="composer" novalidate>
+          <div class="row">
+            <div class="field"><label for="company">Company name</label>
+              <input id="company" type="text" value="NeuraFlash" /></div>
+            <div class="field"><label for="sender">Sent by</label>
+              <input id="sender" type="text" value="Jordan Lee, Head of People" /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="name">Team member name <span class="req">*</span></label>
+              <input id="name" type="text" placeholder="e.g. Priya Sharma" required /></div>
+            <div class="field"><label for="email">Email <span class="req">*</span></label>
+              <input id="email" type="email" placeholder="name@neuraflash.com" required /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="role">Role / team <span class="opt">(optional)</span></label>
+              <input id="role" type="text" placeholder="e.g. Senior Consultant, Service Cloud" /></div>
+            <div class="field"><label for="lastday">Last working day</label>
+              <input id="lastday" type="date" /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="paymonths">Base pay continued</label>
+              <div class="inline"><input id="paymonths" type="number" min="0" step="1" value="2" />
+                <input id="payunit" type="text" value="months of base salary" /></div></div>
+            <div class="field"><label for="medmonths">Medical coverage continued</label>
+              <div class="inline"><input id="medmonths" type="number" min="0" step="1" value="2" />
+                <input id="medunit" type="text" value="months, fully covered" /></div></div>
+          </div>
+          <div class="field"><label for="note">Personal note <span class="opt">(optional)</span></label>
+            <textarea id="note" placeholder="A short, sincere line specific to this person. Leave blank to omit."></textarea></div>
+          <div class="actions">
+            <button type="submit" class="btn btn-primary" id="sendBtn" disabled>Send notice</button>
+            <button type="button" class="btn btn-ghost" id="resetBtn">Reset</button>
+            <span class="send-note" id="sendNote">Add a name and email to enable sending.</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- PREVIEW -->
+      <div class="panel">
+        <div class="panel-head"><h2>Email preview</h2><span class="hint" id="statusTag">Draft</span></div>
+        <div class="preview-body">
+          <div class="email-meta">
+            <div class="line"><span class="k">To</span><span class="v" id="pvTo">—</span></div>
+            <div class="line"><span class="k">From</span><span class="v" id="pvFrom">NeuraFlash People Team</span></div>
+            <div class="line"><span class="k">Subject</span><span class="v" id="pvSubject">An important update about your role at NeuraFlash</span></div>
+          </div>
+          <div class="email-card">
+            <div class="email-banner"><span class="eclipse" aria-hidden="true"></span><span class="wm" id="pvLogo">neura<b>flash</b></span></div>
+            <div class="email-inner">
+              <p class="greet" id="pvGreet">Dear [team member name],</p>
+              <p id="pvIntro">I’m writing to share a difficult decision. As part of a planned change to our organization, your role <span id="pvRole"></span>will be eliminated, and your last working day will be <span class="date-strong" id="pvDate">[date]</span>.</p>
+              <p id="pvReassure">This decision reflects changes to the business, not the quality of your work or the contributions you’ve made here.</p>
+              <p style="font-weight:600;color:var(--e-ink);margin-bottom:4px">To support you through this transition, we’re providing:</p>
+              <ul class="terms">
+                <li><span class="label">Severance pay</span><span class="val" id="pvPay">2 months of base salary, paid on the normal schedule.</span></li>
+                <li><span class="label">Healthcare</span><span class="val" id="pvMed">2 months, fully covered, at no cost to you.</span></li>
+                <li><span class="label">Transition support</span><span class="val">References and help with your search, on request.</span></li>
+              </ul>
+              <p id="pvNote" style="display:none"></p>
+              <p id="pvNext">Over the next few days, our People team will reach out with details on your final pay, benefits continuation, and returning any company equipment. You’re welcome to reply to this email with any questions.</p>
+              <p id="pvThanks">Thank you for everything you brought to the team. We’ll do what we can to help you land well.</p>
+              <div class="signoff">With respect,<br /><span class="who" id="pvSender">Jordan Lee, Head of People</span><br /><span id="pvSignCo">NeuraFlash</span></div>
+            </div>
+            <div class="email-foot" id="pvFoot">NeuraFlash, Part of Accenture · People Operations · This message contains confidential employment information intended only for the named recipient.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span class="fb"><span class="eclipse" aria-hidden="true"></span>NeuraFlash People Operations — a tool for sensitive workforce communications.</span>
+      <span style="font-family:'Sora',sans-serif;letter-spacing:.04em">DEMO BUILD · v0.1</span>
+    </footer>
+  </main>
+
+  <div class="toast-zone"><div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="check" aria-hidden="true">✓</div>
+    <div><div class="t-title" id="toastTitle">Notice sent</div><div class="t-sub" id="toastSub"></div></div>
+  </div></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var ids = ['company','sender','name','email','role','lastday','paymonths','payunit','medmonths','medunit','note'];
+
+  function fmtDate(v) {
+    if (!v) return '[date]';
+    var d = new Date(v + 'T00:00:00');
+    if (isNaN(d)) return '[date]';
+    return d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+  }
+
+  function render() {
+    var company = $('company').value.trim() || 'NeuraFlash';
+    var sender  = $('sender').value.trim() || 'The People Team';
+    var name    = $('name').value.trim();
+    var email   = $('email').value.trim();
+    var role    = $('role').value.trim();
+    var payN = $('paymonths').value.trim(), payU = $('payunit').value.trim();
+    var medN = $('medmonths').value.trim(), medU = $('medunit').value.trim();
+    var note = $('note').value.trim();
+
+    $('pvTo').textContent = name ? (name + (email ? '  <' + email + '>' : '')) : (email || '—');
+    $('pvFrom').textContent = company + ' People Team';
+    $('pvSubject').textContent = 'An important update about your role at ' + company;
+    $('pvSignCo').textContent = company;
+    $('pvGreet').textContent = 'Dear ' + (name || '[team member name]') + ',';
+    $('pvRole').textContent = role ? ('as ' + role + ' ') : '';
+    $('pvDate').textContent = fmtDate($('lastday').value);
+    $('pvPay').textContent = (payN || '—') + ' ' + (payU || '') + (/[.!?]$/.test(payU) ? '' : '.');
+    $('pvMed').textContent = (medN || '—') + ' ' + (medU || '') + (/[.!?]$/.test(medU) ? '' : '.');
+    $('pvSender').textContent = sender;
+    // keep logo wordmark as styled "neuraflash" unless a different company is typed
+    if (company.toLowerCase() === 'neuraflash') { $('pvLogo').innerHTML = 'neura<b>flash</b>'; }
+    else { $('pvLogo').textContent = company; }
+
+    var noteEl = $('pvNote');
+    if (note) { noteEl.style.display = ''; noteEl.textContent = note; } else { noteEl.style.display = 'none'; }
+
+    var ok = name.length > 0 && /\S+@\S+\.\S+/.test(email);
+    $('sendBtn').disabled = !ok;
+    $('sendNote').textContent = ok ? ('Ready to send to ' + email) : 'Add a name and a valid email to enable sending.';
+    $('statusTag').textContent = 'Draft'; $('statusTag').style.color = '';
+  }
+
+  ids.forEach(function (id) { var el = $(id); if (el) el.addEventListener('input', render); });
+
+  $('composer').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = $('name').value.trim(), email = $('email').value.trim();
+    if (!name || !/\S+@\S+\.\S+/.test(email)) return;
+    var btn = $('sendBtn'); btn.disabled = true; btn.textContent = 'Sending…';
+    setTimeout(function () {
+      btn.textContent = 'Sent';
+      $('statusTag').textContent = 'Sent ✓'; $('statusTag').style.color = 'var(--cyan)';
+      var now = new Date().toLocaleString('en-US', { hour:'numeric', minute:'2-digit', month:'short', day:'numeric' });
+      $('toastSub').textContent = 'To ' + email + ' · ' + now + ' · (demo — nothing actually sent)';
+      var t = $('toast'); t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 5200);
+      setTimeout(function(){ btn.textContent = 'Send notice'; btn.disabled = false; }, 2600);
+    }, 900);
+  });
+
+  $('resetBtn').addEventListener('click', function () {
+    $('composer').reset(); $('statusTag').style.color=''; render();
+  });
+
+  (function () { var d = new Date(); d.setDate(d.getDate()+14); $('lastday').value = d.toISOString().slice(0,10); })();
+  render();
+})();
+</script>
+</body>
+</html>
